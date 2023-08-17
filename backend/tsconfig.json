@@ -5,7 +5,8 @@
       "outDir": "./dist",           // Output directory for transpiled JavaScript files
       "rootDir": "./src",           // Directory where your TypeScript files are located
       "strict": true,
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "strictPropertyInitialization": false
     },
     "include": [
       "src/**/*.ts"                // Include your TypeScript files
