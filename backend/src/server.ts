@@ -1,15 +1,18 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import Quotes from './Quotes';
 import { Client, ClientOptions } from '@opensearch-project/opensearch';
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
 
 const client = new Client({
-  node:'',
+  node: process.env.NODE_SERVER,
   auth:{
-    username:'',
-    password:''
+    username:process.env.OS_USERNAME || '',
+    password:process.env.PASSWORD || ''
   }
 });
 
@@ -19,7 +22,7 @@ async function searchExample(searchInput : string) {
       index: 'quotes',
       body: {
         query: {
-          match: {
+          match_prefix: {
             Quote: searchInput
           }
         }
@@ -70,11 +73,16 @@ async function searchExample(searchInput : string) {
 }
 
 app.get('/', async (req,res)=>{
-  // const result = await searchExample(searchInput);
-  // console.log(result);
-  // res.setHeader('Content-Type', 'application/json');
-  // res.writeHead(200);
-  // res.end(JSON.stringify(result));
+  console.log(process.env.NODE_SERVER, process.env.OS_USERNAME, process.env.PASSWORD);
+})
+
+app.get('/quote/search/:query', async (req,res)=>{
+  const query = req.params.query;
+  const result = await searchExample(query);
+  console.log(result);
+  res.setHeader('Content-Type', 'application/json');
+  res.writeHead(200);
+  res.end(JSON.stringify(result));
 })
 
 
