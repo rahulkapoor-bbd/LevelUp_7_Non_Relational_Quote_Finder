@@ -11,7 +11,9 @@ export default class QuoteService {
             body: {
               query: {
                 match_phrase_prefix: {
-                  [category] : searchInput
+                  [category]: {
+                    query: searchInput
+                  }
                 }
               }
             }
