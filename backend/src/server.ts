@@ -19,18 +19,30 @@ const client = new Client({
   }
 });
 
-async function searchExample(searchInput : string) {
+async function searchExample(searchInput : string, category: string) {
   try {
-    const response = await client.search({
+    const query: any = {
       index: 'quotes',
       body: {
-        query: {
-          match_phrase_prefix: {
-            Quote: searchInput
-          }
-        }
+        query: {}
       }
-    });
+    };
+
+    if (category === 'Person') {
+      query.body.query.match_phrase_prefix = { Person: searchInput };
+    } else if (category === 'Occupation') {
+      query.body.query.match_phrase_prefix = { Occupation: searchInput };
+    } else if (category === 'Date') {
+      query.body.query.match_phrase_prefix = { Date: searchInput };
+    } else if (category === 'Location') {
+      query.body.query.match_phrase_prefix = { Location: searchInput };
+    } else if (category === 'Quote') {
+      query.body.query.match_phrase_prefix = { Quote: searchInput };
+    } else if (category === 'Source') {
+      query.body.query.match_phrase_prefix = { Source: searchInput };
+    }
+
+    const response = await client.search(query);
 
     const resultCount : number = response.body.hits.total.value;
     let result : any = {};
@@ -79,15 +91,15 @@ app.get('/', async (req,res)=>{
   console.log(process.env.NODE_SERVER, process.env.OS_USERNAME, process.env.PASSWORD);
 })
 
-app.get('/quote/search/:query', async (req,res)=>{
+app.get('/quote/search/:category/:query', async (req, res) => {
+  const category = req.params.category;
   const query = req.params.query;
-  const result = await searchExample(query);
+  const result = await searchExample(query, category);
   console.log(result);
   res.setHeader('Content-Type', 'application/json');
   res.writeHead(200);
   res.end(JSON.stringify(result));
-})
-
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
