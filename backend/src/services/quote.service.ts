@@ -1,17 +1,17 @@
 import Quote from "../model/quote.model";
-import { ApiResponse, Client, ClientOptions } from '@opensearch-project/opensearch';
+import { Client } from '@opensearch-project/opensearch';
 
 
 export default class QuoteService {
     constructor(private dbClient: Client) {}
-    async searchQuote(searchInput : string) {
+    async searchQuote(searchInput : string, category: string) {
         try {
           const response = await this.dbClient.search({
             index: 'quotes',
             body: {
               query: {
-                match_bool_prefix: {
-                  Quote: searchInput
+                match_phrase_prefix: {
+                  category : searchInput
                 }
               }
             }
