@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import Quotes from './Quotes';
 import { Client, ClientOptions } from '@opensearch-project/opensearch';
@@ -7,6 +8,8 @@ dotenv.config();
 
 const app = express();
 const port = 3000;
+
+app.use(cors());
 
 const client = new Client({
   node: process.env.NODE_SERVER,
@@ -22,7 +25,7 @@ async function searchExample(searchInput : string) {
       index: 'quotes',
       body: {
         query: {
-          match_prefix: {
+          match_phrase_prefix: {
             Quote: searchInput
           }
         }
