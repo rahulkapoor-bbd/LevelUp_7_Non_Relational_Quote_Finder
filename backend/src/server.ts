@@ -12,15 +12,6 @@ app.get('/', async (req, res)=>{
   console.log(process.env.NODE_SERVER, process.env.OS_USERNAME, process.env.PASSWORD);
 })
 
-// app.get('/quote/search/:query', async (req, res)=>{
-//   const query = req.params.query;
-//   const result = await searchQuote(query, 'Quote');
-//   console.log(result);
-//   res.setHeader('Content-Type', 'application/json');
-//   res.writeHead(200);
-//   res.end(JSON.stringify(result));
-// });
-
 app.get('/quote/search/:category/:query', async (req, res) => {
   const category = req.params.category;
   const query = req.params.query;

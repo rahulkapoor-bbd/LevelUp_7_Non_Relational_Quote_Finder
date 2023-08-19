@@ -11,7 +11,7 @@ export default class QuoteService {
             body: {
               query: {
                 match_phrase_prefix: {
-                  category : searchInput
+                  [category] : searchInput
                 }
               }
             }
@@ -19,7 +19,6 @@ export default class QuoteService {
           const results = response.body.hits.hits.map((hit: any) => {
             return hit._source as Quote;
           })
-          console.log(results);
           return results as Quote[]
       
         } catch (error) {
