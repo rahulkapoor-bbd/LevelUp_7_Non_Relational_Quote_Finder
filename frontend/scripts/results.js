@@ -8,8 +8,8 @@ searchBar.addEventListener('input', debounce(() => {
   }
 }, 300));
 
-function searchForQuote(query) {
-  fetch(`http://localhost:3000/quote/search/"${query}"`)
+function searchForQuote(category, query) {
+  fetch(`http://localhost:3000/quote/search/${category}/${query}`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
