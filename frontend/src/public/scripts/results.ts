@@ -11,7 +11,7 @@ searchBar.addEventListener('input', debounce(() => {
 
 function searchForQuote(query: string) {
   const category = "Quote";
-  fetch(`http://localhost:3000/quote/search/${category}/"${query}"`)
+  fetch(`${process.env.API_URL}/quote/search/${category}/${query}`)
     .then(response => response.json())
     .then(data => {
       displayResults(data);
