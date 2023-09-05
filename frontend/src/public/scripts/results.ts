@@ -1,9 +1,24 @@
-const searchBar = document.getElementById('search-bar') as HTMLInputElement;
+const searchBar_ = document.getElementById('search-bar') as HTMLInputElement;
 const resultsList = document.getElementById('results-list') as HTMLElement;
 
-searchBar.addEventListener('input', debounce(() => {
-  const inputValue = searchBar.value;
-  
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const quote = urlParams.get('quote');
+const searchText = urlParams.get('searchText');
+
+if (!!quote) {
+  searchBar_.value = quote;
+  searchForQuote(quote);
+}
+
+if (!!searchText) {
+  searchBar_.value = searchText;
+  searchForQuote(searchText);
+}
+
+searchBar_.addEventListener('input', debounce(() => {
+  const inputValue = searchBar_.value;
+
   if (inputValue.length >= 3) {
     searchForQuote(inputValue);
   }
@@ -11,7 +26,7 @@ searchBar.addEventListener('input', debounce(() => {
 
 function searchForQuote(query: string) {
   const category = "Quote";
-  fetch(`${process.env.API_URL}/quote/search/${category}/${query}`)
+  fetch(`https://axnebcpkzz.eu-west-1.awsapprunner.com/quote/search/${category}/${query}`)
     .then(response => response.json())
     .then(data => {
       displayResults(data);
@@ -66,7 +81,7 @@ function createInfoDiv(leftText: string, rightText: string): HTMLElement {
 
 function debounce(func: () => void, delay: number) {
   let timer: ReturnType<typeof setTimeout>;
-  return function() {
+  return function () {
     clearTimeout(timer);
     timer = setTimeout(func, delay);
   };

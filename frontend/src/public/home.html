@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/home.css">
   <title>Quote Finder</title>
 </head>
+
 <body>
   <section class="header">
-  <nav class="navigation">
-    <ul class="nav-list">
-      <li><a href="#">Movie Quotes</a></li>
-      <li><a href="#">TV Quotes</a></li>
-      <li><a href="#">Book Quotes</a></li>
-      <li><a href="#">Historical Quotes</a></li>
-      <li><a href="#">Music Quotes</a></li>
-    </ul>
-  </nav>
-  <div class="title">
+    <nav class="navigation">
+      <ul class="nav-list">
+        <li><a href="#">Movie Quotes</a></li>
+        <li><a href="#">TV Quotes</a></li>
+        <li><a href="#">Book Quotes</a></li>
+        <li><a href="#">Historical Quotes</a></li>
+        <li><a href="#">Music Quotes</a></li>
+      </ul>
+    </nav>
+    <div class="title">
       <img src="images/logo.png" alt="quotefinder-logo" class="quotefinder-logo">
       <h2>Quote Finder</h2>
-  </div>
-</section>
+    </div>
+  </section>
   <main>
     <h1>Explore Quotes</h1>
     <div class="search-container">
-      <input type="text" class="search-bar" placeholder="Enter keywords">
-      <button class="search-button">Search</button>
+      <input type="text" class="search-bar" id="search-bar" placeholder="Enter keywords">
+      <button class="search-button" id="search-button">Search</button>
+      <div class="dropdown-list" id="search-results"></div>
     </div>
   </main>
+  <script defer src="scripts/home.js"></script>
 </body>
 </html>
