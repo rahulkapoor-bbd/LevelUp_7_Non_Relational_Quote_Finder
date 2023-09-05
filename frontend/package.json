@@ -98,8 +98,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc && cp -r src/public dist/public",
-    "build-local": "npx tsc && robocopy src\\public dist\\public /s",
+    "build": "npx tsc && robocopy src\\public dist\\public /s",
+    "build-aws": "npx tsc && cp -r src/public dist/public",
     "start": "node dist/server.js"
   },
   "keywords": [],
