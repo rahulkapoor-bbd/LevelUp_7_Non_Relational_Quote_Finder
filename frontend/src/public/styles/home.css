@@ -32,30 +32,6 @@ body {
   padding: 25px 0;
 }
 
-.navigation {
-  display: flex;
-  justify-content: center;
-  padding: 10px 0;
-}
-
-.nav-list {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-list li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: color 0.3s ease-in-out;
-}
-
-.nav-list li a:hover {
-  color: #03f7ff;
-}
-
 main {
   text-align: center;
 }
@@ -132,4 +108,24 @@ h2 {
 .dropdown-list .result-item:hover {
   cursor: pointer;
   background-color: #eee;
+}
+
+.category-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.category {
+  padding: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: normal;
+  color: #ffffff;
+  transition: color 0.3s ease-in-out, font-weight 0.3s ease-in-out;
+}
+
+.category.selected {
+  font-weight: bold;
+  color: #03ff64;
 }
