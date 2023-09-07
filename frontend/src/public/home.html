@@ -10,15 +10,6 @@
 
 <body>
   <section class="header">
-    <nav class="navigation">
-      <ul class="nav-list">
-        <li><a href="#">Movie Quotes</a></li>
-        <li><a href="#">TV Quotes</a></li>
-        <li><a href="#">Book Quotes</a></li>
-        <li><a href="#">Historical Quotes</a></li>
-        <li><a href="#">Music Quotes</a></li>
-      </ul>
-    </nav>
     <div class="title">
       <img src="images/logo.png" alt="quotefinder-logo" class="quotefinder-logo">
       <h2>Quote Finder</h2>
@@ -26,6 +17,14 @@
   </section>
   <main>
     <h1>Explore Quotes</h1>
+    <section class="category-container">
+      <div class="category selected" data-category="quote">Quote</div>
+      <div class="category" data-category="person">Person</div>
+      <div class="category" data-category="occupation">Occupation</div>
+      <div class="category" data-category="date">Date</div>
+      <div class="category" data-category="location">Location</div>
+      <div class="category" data-category="source">Source</div>
+    </section>
     <div class="search-container">
       <input type="text" class="search-bar" id="search-bar" placeholder="Enter keywords">
       <button class="search-button" id="search-button">Search</button>
@@ -34,4 +33,5 @@
   </main>
   <script defer src="scripts/home.js"></script>
 </body>
+
 </html>

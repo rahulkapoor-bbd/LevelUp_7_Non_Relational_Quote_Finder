@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/results.css">
   <title>Quote Finder</title>
 </head>
+
 <body>
   <section class="header">
-  <div class="search-container">
-    <input id="search-bar" type="text" class="search-bar" placeholder="Enter keywords">
-    <button class="search-button">Search</button>
-  </div>
-  <div class="title">
+    <section class="category-container">
+      <div class="category" data-category="quote">Quote</div>
+      <div class="category" data-category="person">Person</div>
+      <div class="category" data-category="occupation">Occupation</div>
+      <div class="category" data-category="date">Date</div>
+      <div class="category" data-category="location">Location</div>
+      <div class="category" data-category="source">Source</div>
+    </section>
+    <div class="search-container">
+      <input id="search-bar" type="text" class="search-bar" placeholder="Enter keywords">
+      <button class="search-button">Search</button>
+    </div>
+    <div class="title">
       <img src="images/logo.png" alt="quotefinder-logo" class="quotefinder-logo">
       <h2>Quote Finder</h2>
-  </div>
-</section>
+    </div>
+  </section>
   <main>
     <section class="results-list" id="results-list">
     </section>
   </main>
   <script defer src="scripts/results.js"></script>
-  </body>
-  
-  </html>
+</body>
+
+</html>
